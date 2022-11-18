@@ -6,12 +6,10 @@ import { increment, decrement } from "../store/features/counter/counterSlice";
 import { pushToReply } from "../store/features/Replies/replySlice";
 
 export default function Home() {
-  const comments = useSelector((state) => state.counter.comments);
-  const replyArray = useSelector((state) => state.reply.value);
-  const [newComments, setNewComments] = useState(comments);
+  const [newComments, setNewComments] = useState(null);
   useEffect(() => {
     fetch(
-      "https://my-json-server.typicode.com/Iamweird2/Interactive-Comments-Section/resources"
+      "https://my-json-server.typicode.com/Iamweird2/Interactive-Comments-Section/comments"
     )
       .then((res) => {
         return res.json();
@@ -19,8 +17,7 @@ export default function Home() {
       .then((data) => setNewComments(data));
   }, []);
   console.log(newComments);
-  const [newReplyArray, setNewReplyArray] = useState(replyArray);
-  const user = useSelector((state) => state.counter.user);
+
   const dispatch = useDispatch();
 
   function handleReply(name, id, replyDiv) {
@@ -45,6 +42,9 @@ export default function Home() {
       },
     };
     dispatch(pushToReply([id, newValue]));
+  }
+  if (!newComments) {
+    return <div> Loading </div>;
   }
   return (
     <main className="flex flex-col w-screen h-full gap-2 py-6 bg-bgColor text-textColor">
