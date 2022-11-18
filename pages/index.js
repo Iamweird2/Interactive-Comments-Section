@@ -20,7 +20,7 @@ export default function Home() {
       })
       .then((data) => setNewComments(data));
   }, []);
-
+  console.log(newComments);
   const [newReplyArray, setNewReplyArray] = useState(replyArray);
   const user = useSelector((state) => state.counter.user);
   const dispatch = useDispatch();

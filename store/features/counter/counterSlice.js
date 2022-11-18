@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import data from "../../../data.json";
 
 let comments = data.comments;
 let user = data.currentUser;
