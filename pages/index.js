@@ -2,8 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import handler from "./api/hello";
-import { data } from "autoprefixer";
 import { increment, decrement } from "../store/features/counter/counterSlice";
 import { pushToReply } from "../store/features/Replies/replySlice";
 
